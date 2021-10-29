@@ -24,7 +24,8 @@
                 <div class="row-content">
                     <label class="label text" for="name">Name</label>
                     <input class="input" type="text" id="name" name="name" placeholder="Your name.." required>
-                    <output class="salary-output text" id="displayNameError" for="name"></output>
+                    <error-output class="text-error" for="text"></error-output>
+                    <!--<error-output class="salary-output text" id="displayNameError" for="name"></error-output>-->
                 </div>
 
                 <div class="row-content">            
@@ -78,7 +79,7 @@
                 <div class="row-content">
                     <label class="label text" for="salary">Choose your salary:</label>
                     <input class="input" type="range" name="salary" id="salary" min="300000" value="400000" max="500000" step="100">
-                    <output class="salary-output text" id="displaySalary" for="salary">400000</output>
+                    <error-output  class="salary-output text" id="displaySalary" for="salary">400000</error-output>
                 </div>
 
                 <div class="row-content">
@@ -148,12 +149,13 @@
                 <div class="buttonParent">
                     <a href="../Pages/EmployeePayrollForm.html" class="resetButton button cancelButton">Cancel</a>
                     <div class="submit-reset">
-                        <button type="submit" class="button submitButton" id="submitButton" onclick="CheckAllField()">Submit</button>
+                        <button type="submit" class="button submitButton" id="submitButton" >Submit</button>
                         <button type="reset" class="resetButton button">Reset</button>
                     </div>
                 </div>
             </form>        
         </div>
-        <script src="../Script/Events.js"></script>
+        <script src="../Script/payroll_form.js"></script>
     </body>
+    <!--onclick="CheckAllField()"-->
 </html>

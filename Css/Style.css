@@ -203,3 +203,11 @@ select{
         padding: 44px 20px;
     }
 }
+
+/* uc 12 */
+errot-output{
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
