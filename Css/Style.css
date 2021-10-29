@@ -120,7 +120,7 @@ label{
 }
 
 select{
-    padding: 0px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
