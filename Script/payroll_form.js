@@ -25,17 +25,6 @@ window.addEventListener('DOMContentLoaded',(event)=>{
 
     //Date check
     
-    const day = document.querySelector('#day').value;
-    const month = document.querySelector('#month').value;
-    const year = document.querySelector('#year').value;
-    let currDate = new Date();
-    let user_date = new Date(year+"-"+month+"-"+day); 
-    const date_error = document.querySelector('.date-error');
-    year.addEventListener('input',function(){
-        if(user_date > currDate){
-            date_error.textContent="You cannot select future Date"
-        }
-    })
 });
 const save = () =>{
     try{
@@ -53,12 +42,13 @@ function createAndUpdateStorage(employeePayrollData){
     }else{
         employeePayrollList=[employeePayrollData];
     }
-    alert(employeePayrollList.toString());
+    alert("UC 4: "+employeePayrollList.toString());
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
 }
 
 //UC 3
 const createEmployeePayroll = () => {
+    debugger;
     let employeePayrollData = new EmployeePayrollData();
     try{
         employeePayrollData.name=getInputValueById('#name');
@@ -66,15 +56,19 @@ const createEmployeePayroll = () => {
         setTextValue('.text-error',e);
         throw e;
     }
-
+    //employeePayrollData.name=getInputValueById('#name');
     employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
     employeePayrollData.gender=getSelectedValues('[name=gender]').pop();
     employeePayrollData.department=getSelectedValues('[name=department]');
-    employeePayrollData.salary=getSelectedValues('#salary');
-    employeePayrollData.note=getSelectedValues('#notes');
-    let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+getInputValueById("#year");
-    employeePayrollData.date=Date.parse(date);
-    alert(employeePayrollData.toString());
+    employeePayrollData.salary=getInputValueById('#salary');
+    employeePayrollData.note=getInputValueById('#notes');
+    // let date = getInputValueById("#year")+"-"+getInputValueById('#month')+"-"+getInputValueById('#day');
+    // console.log(date);
+    // employeePayrollData.startDate=Date.parse(date).toISOString();
+    //let abc = getInputValueById("#day")+" "+getInputValueById('#month')+" "+getInputValueById("#year");
+    let abc = getInputValueById("#year")+"-"+getInputValueById('#month')+"-"+getInputValueById('#day');
+    employeePayrollData.startDate = Date.parse(abc);
+    alert("UC 3: "+employeePayrollData.toString());
     return employeePayrollData;
 }
 
@@ -82,9 +76,9 @@ const getSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
     let setItems = [];
     allItems.forEach(item => {
-        if(item.checked) selItems.push(item.value);
+        if(item.checked) setItems.push(item.value);
     });
-    return selItems;
+    return setItems;
 }
 
 const getInputValueById = (id) => {

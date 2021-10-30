@@ -4,10 +4,12 @@ class EmployeePayrollData{
 
     get name(){return this._name;}
     set name(name){
-        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]$');
-        if(nameRegex.test(name))
-            this._nmae = name;
-        else throw 'Name is Incorrect';
+        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+        if(nameRegex.test(name)){
+            this._name = name;
+        }else{
+            throw 'Name is Incorrect';
+        } 
     }
 
     get profilePic(){ return this._profilePic;}
@@ -39,12 +41,15 @@ class EmployeePayrollData{
     set startDate(startDate){
         this._startDate = startDate;
     }
-
+    //if(!this.startDate || this.startDate == null || this.startDate.length > 0)
     //Method
     toString(){
-        const option = { year: 'numeric', month:'long',day:'numeric'};
-        const empDate = !this.startDate ? "undefined" : this.startDate.toLocalDateString("en-US",options);
-        return "id="+this.name+", gender "+this.gender+", department "+this.department+", salary "+this.salary+
-        "startDate "+empDate+", note "+this.note;
+        debugger;
+        const option = { year: 'numeric', month:'long', day:'numeric'};
+        //const empDate = this.startDate ? "undefined" : this.startDate.toLocaleDateString("en-US",option);
+        //const empDate = this.startDate ?  this.startDate.toLocaleDateString("en-US",option) :"undefined" ;
+        //const empDate = this.startDate;
+        return "name="+this.name+", gender="+this.gender+", department="+this.department+", salary="+this.salary+
+        "startDate="+this.startDate+", note="+this.note;
     }
 }
